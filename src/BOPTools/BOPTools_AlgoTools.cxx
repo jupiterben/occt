@@ -858,6 +858,7 @@ Standard_Boolean BOPTools_AlgoTools::GetFaceOff
     const BOPTools_CoupleOfShape& aCS=aIt.Value();
     const TopoDS_Edge& aE2=(*(TopoDS_Edge*)(&aCS.Shape1()));
     const TopoDS_Face& aF2=(*(TopoDS_Face*)(&aCS.Shape2()));
+	if (aE2.IsNull() || aF2.IsNull()) continue;
     //
     aDTgt2 = (aE2.Orientation()==aOr) ? aDTgt : aDTgt.Reversed();
     GetFaceDir(aE2, aF2, aPx, aT, aDTgt2, aDN2, aDBF2, theContext, 
@@ -2013,6 +2014,7 @@ Standard_Real MinStep3D(const TopoDS_Edge& theE1,
     const BOPTools_CoupleOfShape& aCS = aIt.Value();
     const TopoDS_Face& aF = (*(TopoDS_Face*)(&aCS.Shape2()));
     //
+	if (aF.IsNull()) continue;
     aTolF = BRep_Tool::Tolerance(aF);
     aDt = 2*(aTolE + aTolF);
     //
