@@ -861,8 +861,15 @@ Standard_Boolean BOPTools_AlgoTools::GetFaceOff
 	if (aE2.IsNull() || aF2.IsNull()) continue;
     //
     aDTgt2 = (aE2.Orientation()==aOr) ? aDTgt : aDTgt.Reversed();
-    GetFaceDir(aE2, aF2, aPx, aT, aDTgt2, aDN2, aDBF2, theContext, 
-               aProjPL, aDt3D);
+	try{
+		GetFaceDir(aE2, aF2, aPx, aT, aDTgt2, aDN2, aDBF2, theContext,
+			aProjPL, aDt3D);
+	}
+	catch (...)
+	{
+		//This failed projection. try the next iteration.
+		continue;
+	}
     //Angle
     aAngle=AngleWithRef(aDBF, aDBF2, aDTF);
     //
