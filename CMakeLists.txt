@@ -315,6 +315,10 @@ if (ANDROID AND BUILD_MODULE_Draw)
   set (BUILD_MODULE_Draw OFF CACHE BOOL "${BUILD_MODULE_Draw_DESCR}" FORCE)
 endif()
 
+if (${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
+    set (BUILD_MODULE_Draw OFF CACHE BOOL "${BUILD_MODULE_Draw_DESCR}" FORCE)
+endif ()
+
 # Overview
 set (BUILD_DOC_Overview OFF CACHE BOOL "${BUILD_DOC_Overview_DESCR}")
 
