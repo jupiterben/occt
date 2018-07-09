@@ -322,9 +322,9 @@ endif ()
 # Overview
 set (BUILD_DOC_Overview OFF CACHE BOOL "${BUILD_DOC_Overview_DESCR}")
 
-if (NOT USE_D3D)
-  list (REMOVE_ITEM Visualization_TOOLKITS TKD3DHost)
-endif()
+#if (NOT USE_D3D)
+#  list (REMOVE_ITEM Visualization_TOOLKITS TKD3DHost)
+#endif()
 
 # accumulate used toolkits (first level) in BUILD_TOOLKITS variable
 list (APPEND BUILD_TOOLKITS ${BUILD_ADDITIONAL_TOOLKITS})
